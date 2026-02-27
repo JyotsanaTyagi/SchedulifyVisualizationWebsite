@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CPU Process Scheduling Simulator</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- Load Chart.js from CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Load Moment.js for time scales if needed -->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    </head>
+<body>
+    <div class="container">
+        <h1>CPU Process Scheduling Simulator</h1>
+        
+        <div class="input-section">
+            <h2>Process Input</h2>
+            <div id="process-inputs">
+                <div class="process-input">
+                    <input type="number" class="pid" placeholder="PID" min="1">
+                    <input type="number" class="arrival-time" placeholder="Arrival Time" min="0">
+                    <input type="number" class="burst-time" placeholder="Burst Time" min="1">
+                    <input type="number" class="priority" placeholder="Priority" min="0">
+                    <button class="remove-btn">×</button>
+                </div>
+            </div>
+            <button id="add-process">Add Process</button>
+            <button id="generate-random">Generate Random Processes</button>
+            <button id="clear-all">Clear All</button>
+        </div>
+        
+        <div class="algorithm-section">
+            <h2>Algorithms</h2>
+            <div class="algorithm-options">
+                <label><input type="checkbox" name="algorithm" value="FCFS" checked> FCFS</label>
+                <label><input type="checkbox" name="algorithm" value="SJF" checked> SJF</label>
+                <label><input type="checkbox" name="algorithm" value="SRTF" checked> SRTF</label>
+                <label><input type="checkbox" name="algorithm" value="LJF" checked> LJF</label>
+                <label><input type="checkbox" name="algorithm" value="LRTF" checked> LRTF</label>
+                <label><input type="checkbox" name="algorithm" value="Priority" checked> Priority</label>
+                <label><input type="checkbox" name="algorithm" value="RoundRobin" checked> Round Robin</label>
+            </div>
+            <div id="round-robin-input" class="hidden">
+                <label for="time-quantum">Time Quantum: </label>
+                <input type="number" id="time-quantum" min="1" value="2">
+            </div>
+            <button id="simulate">Run Simulation</button>
+            <button id="compare">Compare Algorithms</button>
+        </div>
+        
+        <div class="results-section">
+            <h2>Results</h2>
+            <div id="results-container"></div>
+            <div id="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="algo.js"></script>
+    <script src="graph.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>
